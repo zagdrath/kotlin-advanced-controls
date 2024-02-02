@@ -10,42 +10,42 @@ import edu.wpi.first.wpilibj.TimedRobot
 import edu.wpi.first.wpilibj2.command.Command
 import edu.wpi.first.wpilibj2.command.CommandScheduler
 
-class Robot : TimedRobot() {
+object Robot : TimedRobot() {
   private var autonomousCommand: Command? = null
 
-  private final val robotContainer = RobotContainer()
+  private val robotContainer = RobotContainer
 
-  override public fun robotInit() {}
+  override fun robotInit() {}
 
-  override public fun robotPeriodic() {
+  override fun robotPeriodic() {
     CommandScheduler.getInstance().run()
   }
 
-  override public fun disabledInit() {}
+  override fun disabledInit() {}
 
-  override public fun disabledPeriodic() {}
+  override fun disabledPeriodic() {}
 
-  override public fun autonomousInit() {
+  override fun autonomousInit() {
     autonomousCommand = robotContainer.getAutonomousCommand()
 
     autonomousCommand?.schedule()
   }
 
-  override public fun autonomousPeriodic() {}
+  override fun autonomousPeriodic() {}
 
-  override public fun teleopInit() {
+  override fun teleopInit() {
     autonomousCommand?.cancel()
   }
 
-  override public fun teleopPeriodic() {}
+  override fun teleopPeriodic() {}
 
-  override public fun testInit() {
+  override fun testInit() {
     CommandScheduler.getInstance().cancelAll()
   }
 
-  override public fun testPeriodic() {}
+  override fun testPeriodic() {}
 
-  override public fun simulationInit() {}
+  override fun simulationInit() {}
 
-  override public fun simulationPeriodic() {}
+  override fun simulationPeriodic() {}
 }

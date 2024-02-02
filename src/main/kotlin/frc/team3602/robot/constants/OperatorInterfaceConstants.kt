@@ -4,7 +4,6 @@
  * in the root directory of this project.
  */
 
-package frc.team3602.robot.constants
+package frc.team3602.robot.constants.operatorinterfaceconstants
 
-// Operator interface constants
 const val kXboxControllerPort: Int = 0

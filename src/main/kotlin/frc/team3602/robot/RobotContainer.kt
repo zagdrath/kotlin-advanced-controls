@@ -10,16 +10,19 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard
 import edu.wpi.first.wpilibj2.command.Command
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController
-import frc.team3602.robot.constants.*
 
-class RobotContainer() {
+import frc.team3602.robot.constants.operatorinterfaceconstants.*
+import frc.team3602.robot.subsystems.PivotSubsystem
+
+object RobotContainer {
   // Subsystems
+  private val pivotSubsys = PivotSubsystem
 
   // Operator interfaces
-  private final val xboxController = CommandXboxController(kXboxControllerPort)
+  private val xboxController = CommandXboxController(kXboxControllerPort)
 
   // Autonomous
-  private final val sendableChooser = SendableChooser<Command>()
+  private val sendableChooser = SendableChooser<Command>()
 
   init {
     configDefaultCommands()
@@ -27,7 +30,9 @@ class RobotContainer() {
     configAutonomous()
   }
 
-  private fun configDefaultCommands() {}
+  private fun configDefaultCommands() {
+    pivotSubsys.defaultCommand = pivotSubsys.holdAngle()
+  }
 
   private fun configButtonBindings() {}
 
@@ -35,7 +40,7 @@ class RobotContainer() {
     SmartDashboard.putData(sendableChooser)
   }
 
-  public fun getAutonomousCommand(): Command {
+  fun getAutonomousCommand(): Command {
     return sendableChooser.selected
   }
 }

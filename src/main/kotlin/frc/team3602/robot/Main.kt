@@ -8,9 +8,9 @@ package frc.team3602.robot
 
 import edu.wpi.first.wpilibj.RobotBase
 
-object Main { 
+object Main {
   @JvmStatic
   fun main(args: Array<String>) {
-    RobotBase.startRobot { Robot() }
+    RobotBase.startRobot { Robot }
   }
 }
